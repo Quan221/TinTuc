@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container } from "react-bootstrap";
 import Header from "./layout/Header";
 import Image from 'react-bootstrap/Image'
@@ -7,9 +7,10 @@ import test2 from './image 46.png';
 import test3 from './image 50.png';
 import test4 from './image 47.png';
 import Footer from "./layout/Footer";
+import { UserContext } from "../App";
 const HomePage = () => {
-
-
+    const [user, dispatch] = useContext(UserContext)
+    console.log(user)
     return (
         <>
             <Header />

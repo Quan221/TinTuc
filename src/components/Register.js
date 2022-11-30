@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button, Form, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
-import Apis, { endpoints } from "../configs/api";
+import api, { endpoints } from "../configs/api";
 import axios from "axios";
 
 export default function Register() {
@@ -25,44 +25,42 @@ export default function Register() {
         if (parts.length === 2) return parts.pop().split(';').shift();
     }
 
+    // axios.get('http://127.0.0.1:8000/categories')
+    //     .then(function (response) {
+    //         console.log(response);
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     });
     useEffect(() => {
-        axios.get('locahost:8000/sanctum/csrf-cookie')
-            .then(function (response) {
-                console.log(response);
-                console.log(document.cookie.get('XSRF-TOKEN'));
 
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        const loadCategories = async () => {
+            const res2 = await api.get(endpoints['category'])
+            console.log(res2.data)
+
+        }
+
+
+        loadCategories()
     }, [])
-    axios.get('locahost:8000/categories')
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
 
     const register = (event) => {
         event.preventDefault()
 
         let registerUser = async () => {
-            const data = {
-                name: name,
-                email: username,
-                password: password
-            }
+
             try {
 
 
-                const res = await Apis.post(endpoints['register'], {
+                const res = await api.post(endpoints['register'], {
                     name: name,
                     email: username,
                     password: password
                 }, {
                     headers: {
-                        "X-XSRF-TOKEN": getCookie('XSRF-TOKEN')
+
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
                     }
 
 

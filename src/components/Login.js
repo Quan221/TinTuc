@@ -13,6 +13,7 @@ const Login = () => {
     const [password, setPassword] = useState()
     const [user, dispatch] = useContext(UserContext)
 
+
     const login = async (evt) => {
         evt.preventDefault()
 
@@ -23,26 +24,33 @@ const Login = () => {
 
         const res = await Apis.post(endpoints['login'], formData, {
             headers: {
-                "Content-Type": "multipart/form-data"
+
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+
             }
 
+
         })
+        console.log(res.data)
 
-        localStorage.setItem('userToken', res.data.access_token)
+        localStorage.setItem('userToken', res.data['Access Token'])
 
 
 
-        const user = await authApi().get(endpoints['current-user'])
-        console.info(user.data)
+        const user1 = await authApi().get(endpoints['current-user'])
+        console.info(user1.data)
         dispatch({
             'type': 'login',
-            'payload': user.data
+            'payload': user1.data
         })
+        console.log(user)
+
     }
 
 
-    // if (user != null)
-    //     return <Navigate to="/homepage" />
+    if (user != null)
+        return <Navigate to="/homepage" />
     return (
         <>
 

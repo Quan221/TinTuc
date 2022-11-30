@@ -3,11 +3,11 @@ import axios from "axios"
 
 export let endpoints = {
 
-    "register": "/register/",
+    "register": "/api/register/",
 
-    "current-user": "/current-user/",
-    "login": "/login/",
-    "category": "/categories/",
+    "current-user": "/api/current-user/",
+    "login": "/api/login/",
+    "category": "/api/categories/",
 
 
 
