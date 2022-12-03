@@ -47,6 +47,9 @@
 
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(14px);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+
 
 }
 
@@ -72,24 +75,26 @@
 }
 
 .nav-link {
-  margin-left: 5%;
+  margin-left: 2%;
 }
 
 .logo-header {
 
   position: absolute;
-  width: 62.79px;
-  height: 52px;
+  width: 66px;
+  height: 66px;
   left: -30%;
-  top: -60%;
+  top: -90%;
+  border-radius: 50%;
   border-style: solid;
+  border-color: red;
 
 }
 
 .icons-header {
 
   position: absolute;
-  width: 10%;
+  width: 15%;
   height: 24px;
   left: 1300px;
   top: 28px;
@@ -100,12 +105,14 @@
 
 .content-banner {
   position: relative;
-  width: 540px;
+  width: 650px;
   height: 320px;
   top: 20%;
   left: 10%;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 14px rgba(42, 42, 42, 0.24);
+  border-radius: 3px;
 
-  border-style: solid;
 }
 
 .banner {
@@ -154,10 +161,13 @@
   position: relative;
   width: 66px;
   height: 66px;
-  border-style: solid;
+
   left: 20%;
   top: 30%;
-  border-color: white;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: red;
+
 }
 
 .content-footer {
@@ -263,3 +273,110 @@
   height: 100vh;
   color: #f5f5ff;
 } */
+
+#avatar>img {
+  width: 80px;
+  height: 80px;
+  background-blend-mode: normal;
+  border-radius: 50px;
+}
+
+#role {
+  font-family: 'Nunito Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 22px;
+  color: #2A2A2A;
+  opacity: 0.7;
+}
+
+#name {
+  font-family: 'Nunito Sans', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 22px;
+  color: #2A2A2A;
+}
+
+.line {
+  width: 100%;
+  border: 1px solid #C31815;
+}
+
+.recommend {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 300px;
+  top: 60%;
+}
+
+.title-news {
+  font-family: 'IBM Plex Serif';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  text-align: center;
+
+}
+
+.content-news {
+
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+  width: 388px;
+  height: 100px;
+  margin: 5%;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+.text-content {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  width: 75%;
+  margin-left: 10%;
+  white-space: pre-line;
+}
+
+.btn-login {
+  border-radius: 10px;
+  margin-right: 15px;
+  padding: 5px 10px;
+  border: 2px solid #535353;
+  background: green;
+  color: white;
+  margin-left: 10px;
+  width: 150px;
+
+}
+
+.content-news-banner {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+  width: 550px;
+  height: 200px;
+  margin: 5%;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  display: block;
+
+
+}

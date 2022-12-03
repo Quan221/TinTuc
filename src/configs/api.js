@@ -8,7 +8,10 @@ export let endpoints = {
     "current-user": "/api/current-user/",
     "login": "/api/login/",
     "category": "/api/categories/",
-
+    "post": "/api/posts/",
+    "my-post": "/api/posts/my-post/",
+    "post-detail": (postId) => `api/posts/detail/${postId}/`,
+    "like": (postId) => `api/posts/${postId}/like`,
 
 
 

@@ -7,6 +7,10 @@ import Login from './components/Login';
 import Register from './components/Register';
 import myReducer from './reducer/UseReducer';
 import { createContext, useReducer } from 'react';
+import Detail from './components/Detail';
+import Post from './components/Post';
+import MyPost from './components/MyPost';
+import Update from './components/Update';
 export const UserContext = createContext()
 function App() {
   const [user, dispatch] = useReducer(myReducer)
@@ -17,7 +21,10 @@ function App() {
           <Route path='/homepage' element={<HomePage />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/test' element={<test2 />} />
+          <Route path='/posts/detail/:postId' element={<Detail />} />
+          <Route path='/post' element={<Post />} />
+          <Route path='/my-post' element={<MyPost />} />
+          <Route path='/posts/update/:postId' element={<Update />} />
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>
