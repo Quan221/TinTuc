@@ -79,7 +79,7 @@ const Post = () => {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                         <Form.Label>Example textarea</Form.Label>
-                        <Form.Control as="textarea" rows={3} controlId='content'
+                        <Form.Control as="textarea" rows={10} controlId='content'
                             value={content}
                             onChange={(event) => setContent(event.target.value)} />
                     </Form.Group>
@@ -87,6 +87,7 @@ const Post = () => {
                         <Form.Label>Photo</Form.Label>
                         <Form.Control type="file" value={photo} className="form-control" onChange={(event) => setPhoto(event.target.files[0])} />
                     </Form.Group> */}
+
                     <input type='file' onChange={(event) => setPhoto(event.target.files[0])}  ></input>
                     <FormSelect value={category} onChange={(event) => setCategory(event.target.value)}  >
                         <option disabled selected='true' >Not select</option>

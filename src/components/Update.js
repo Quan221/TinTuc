@@ -38,7 +38,7 @@ const Update = () => {
             formData.append("content", content)
             console.log(category)
             try {
-                await authApi().post(endpoints['post'], formData, {
+                await authApi().post(`${endpoints['post']}${postId}`, formData, {
                     headers: {
                         'Accept': 'application/json',
                         "Content-Type": "multipart/formdata"
@@ -84,7 +84,7 @@ const Update = () => {
 
 
                     <Button variant="primary" type="submit" >
-                        Đăng Bài
+                        Sửa Bài
                     </Button>
                 </Form>
             </Container>

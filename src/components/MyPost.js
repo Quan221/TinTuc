@@ -51,7 +51,7 @@ const MyPost = () => {
                                         <td style={{ overflow: 'hidden', whiteSpace: 'normal', height: '105px', display: 'inline-block', textOverflow: 'ellipsis' }}   > {c.content}  </td>
 
                                         <td><Link to={`/posts/update/${c.id}`} ><Button style={{ backgroundColor: '#4CAF50', borderRadius: '10px' }} > Chỉnh Sửa</Button></Link></td>
-                                        <td><Button style={{ backgroundColor: '#4CAF50', borderRadius: '10px' }} > Xóa</Button></td>
+                                        <td><Button style={{ backgroundColor: 'red', borderRadius: '10px' }} > Xóa</Button></td>
                                     </tr>
 
 

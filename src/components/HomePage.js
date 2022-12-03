@@ -25,14 +25,9 @@ const HomePage = () => {
             console.log(res2.data)
 
         }
-        const loadMyPost = async () => {
-            const res = await authApi().get(endpoints['my-post'])
-            console.log(res.data)
-            setPost(res.data)
 
-        }
 
-        loadMyPost()
+
 
         loadPost()
 
