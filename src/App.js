@@ -11,6 +11,8 @@ import Detail from './components/Detail';
 import Post from './components/Post';
 import MyPost from './components/MyPost';
 import Update from './components/Update';
+import Categories from './components/Categories';
+import Admin from './components/admin';
 export const UserContext = createContext()
 function App() {
   const [user, dispatch] = useReducer(myReducer)
@@ -25,6 +27,8 @@ function App() {
           <Route path='/post' element={<Post />} />
           <Route path='/my-post' element={<MyPost />} />
           <Route path='/posts/update/:postId' element={<Update />} />
+          <Route path='/categories' element={<Categories />} />
+          <Route path='/admin' element={<Admin />} />
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>

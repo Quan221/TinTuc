@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Button, Container, FormSelect } from "react-bootstrap";
+import { Button, Container, FormGroup, FormLabel, FormSelect } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
+import { Link, useNavigate } from "react-router-dom";
 import api, { authApi, endpoints } from "../configs/api";
 import Header from "./layout/Header";
-
 const Post = () => {
-
-
 
     const [title, setTitle] = useState(null)
     const [content, setContent] = useState(null)
@@ -14,7 +12,6 @@ const Post = () => {
     const [categories, setCategories] = useState([])
     const [category, setCategory] = useState(null)
     const [myPost, setMyPost] = useState([])
-
     useEffect(() => {
 
         const loadPost = async () => {
@@ -33,6 +30,12 @@ const Post = () => {
         loadMyPost()
         loadPost()
     }, [])
+    const nav = useNavigate()
+    const goToHome = () => {
+        {
+            nav(`/my-post`)
+        }
+    }
     const posts = (event) => {
         event.preventDefault()
 
@@ -68,35 +71,52 @@ const Post = () => {
 
         <>
             <Header></Header>
-            <Container>
+            <Container style={{ position: 'absolute', top: "250px" }}>
+                <h3 class="mt-3 text-center text-primary text-uppercase">Tạo bài viết mới</h3>
+                <div class="col-12 col-xl-auto mb-3">
+                    <Link className="btn btn-sm btn-light text-primary" to="/my-post">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left me-1"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        Danh sách tin tức
+                    </Link>
+                </div>
                 <Form onSubmit={posts}>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="text" placeholder="title" controlId='title'
-                            value={title}
+                        <Form.Label >Tiêu đề<span class="text-danger">&#32;&#42;</span></Form.Label>
+                        <Form.Control type="text" autoFocus placeholder="Nhập tiêu đề..." controlId='title'
+                            value={title} required
                             onChange={(event) => setTitle(event.target.value)}
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Example textarea</Form.Label>
+                        <Form.Label>Nội dung tin tức<span class="text-danger">&#32;&#42;</span></Form.Label>
                         <Form.Control as="textarea" rows={10} controlId='content'
-                            value={content}
+                            value={content} placeholder="Nhập nội dung của tin tức..."
                             onChange={(event) => setContent(event.target.value)} />
+
                     </Form.Group>
+
+
                     {/* <Form.Group className="mb-3" controlId="photo">
                         <Form.Label>Photo</Form.Label>
                         <Form.Control type="file" value={photo} className="form-control" onChange={(event) => setPhoto(event.target.files[0])} />
                     </Form.Group> */}
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                        <Form.Label>Hình ảnh</Form.Label>
+                        {/* <Form.Control type="file" value={photo} className="form-control" onChange={(event) => setPhoto(event.target.files[0])} /> */}
 
-                    <input type='file' onChange={(event) => setPhoto(event.target.files[0])}  ></input>
-                    <FormSelect value={category} onChange={(event) => setCategory(event.target.value)}  >
-                        <option disabled selected='true' >Not select</option>
-                        {categories.map(c => {
-                            return <option value={c.id}>{c.name}</option>
-                        })}
+                        <input type='file' class="form-control" onChange={(event) => setPhoto(event.target.files[0])}  ></input>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                        <Form.Label>Danh mục tin tức</Form.Label>
+                        <FormSelect value={category} onChange={(event) => setCategory(event.target.value)}  >
+                            <option disabled selected='true' >Chọn danh mục</option>
+                            {categories.map(c => {
+                                return <option value={c.id}>{c.name}</option>
+                            })}
 
+                        </FormSelect>
+                    </Form.Group>
 
-                    </FormSelect>
                     <Button variant="primary" type="submit" >
                         Đăng Bài
                     </Button>

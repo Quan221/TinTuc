@@ -43,21 +43,29 @@ const Header = () => {
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item >
-                        <Link to='/login' onClick={logout} > Đăng xuất</Link>
+                        <Link onClick={logout} > Đăng xuất</Link>
                     </NavDropdown.Item>
                 </NavDropdown>
 
             </>
 
         }
-        // else {
-        //     btn = <>
-        //         <div style={{ marginTop: '8px' }} > </div>
-        //         <Link to='/login'  >  Đăng xuất</Link>
+        else {
+            btn = <>
+                <NavDropdown title={user.name} id="basic-nav-dropdown" style={{ marginLeft: "5%", height: '100%', width: "100%" }}>
+                    <NavDropdown.Item >
+                        <Link to='/admin' className="nav-link" >Quản Lý Bài Viết</Link>
+                    </NavDropdown.Item>
 
-        //     </>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item >
+                        <Link onClick={logout} > Đăng xuất</Link>
+                    </NavDropdown.Item>
+                </NavDropdown>
 
-        // }
+            </>
+
+        }
 
     }
     else {
@@ -78,7 +86,7 @@ const Header = () => {
                     <Link to='/homepage' className="nav-link" >Trang Chủ</Link>
                     {categories.map(c => {
                         return (
-                            <Link className="nav-link" >{c.name}</Link>
+                            <Link className="nav-link" to={`/posts/${c.id}`} >{c.name}</Link>
                         )
                     })}
 
