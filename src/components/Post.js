@@ -71,7 +71,7 @@ const Post = () => {
 
         <>
             <Header></Header>
-            <Container style={{ position: 'absolute', top: "250px" }}>
+            <Container >
                 <h3 class="mt-3 text-center text-primary text-uppercase">Tạo bài viết mới</h3>
                 <div class="col-12 col-xl-auto mb-3">
                     <Link className="btn btn-sm btn-light text-primary" to="/my-post">

@@ -27,7 +27,7 @@ function App() {
           <Route path='/post' element={<Post />} />
           <Route path='/my-post' element={<MyPost />} />
           <Route path='/posts/update/:postId' element={<Update />} />
-          <Route path='/categories' element={<Categories />} />
+          <Route path='/categories/:categoryId/posts' element={<Categories />} />
           <Route path='/admin' element={<Admin />} />
         </Routes>
       </UserContext.Provider>

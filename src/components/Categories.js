@@ -9,16 +9,17 @@ import test4 from './image 47.png';
 import Footer from "./layout/Footer";
 import { UserContext } from "../App";
 import api, { authApi, endpoints } from "../configs/api";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 const Categories = () => {
     const [user, dispatch] = useContext(UserContext)
     console.log(user)
     const [lists, setLists] = useState([])
     const [post, setPost] = useState([])
+    const { categoryId } = useParams()
     useEffect(() => {
 
         const loadPost = async () => {
-            const res2 = await api.get(endpoints['post'])
+            const res2 = await api.get(endpoints['categoies-posts'](categoryId))
 
             setLists(res2.data)
 
@@ -34,7 +35,7 @@ const Categories = () => {
 
         // loadPost()
     }, [])
-    console.log(lists.length - 1)
+
     return (
         <>
             <Header />
@@ -42,32 +43,25 @@ const Categories = () => {
                 <div className="list-new"  >
 
                     {lists.map(c => {
-                        if (c.id == lists.length) {
-                            return (
-                                <>
 
-                                </>
-                            )
-                        }
-                        else {
-                            return (
-                                <>
-                                    <Link to={`/posts/detail/${c.id}`} className='nav-link' >
-                                        <div className="item-new" >
-                                            <Image src={`http://localhost:8000/storage/${c.photo}`} style={{
-                                                width: '438px',
-                                                height: '220px',
-                                                position: 'relative',
+                        return (
+                            <>
+                                <Link to={`/posts/detail/${c.id}`} className='nav-link' >
+                                    <div className="item-new" >
+                                        <Image src={`http://localhost:8000/storage/${c.photo}`} style={{
+                                            width: '438px',
+                                            height: '220px',
+                                            position: 'relative',
 
-                                            }} />
-                                            <div className="title-news" > {c.title} </div>
-                                            <div className="content-news" >{c.content}  </div>
+                                        }} />
+                                        <div className="title-news" > {c.title} </div>
+                                        <div className="content-news" >{c.content}  </div>
 
-                                        </div>
-                                    </Link>
-                                </>
-                            )
-                        }
+                                    </div>
+                                </Link>
+                            </>
+                        )
+
 
                     })}
 

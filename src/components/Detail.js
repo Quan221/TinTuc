@@ -157,7 +157,7 @@ const Detail = () => {
                                 <div id="avatar" class="col-auto"><img src="Núi_ (15).jpg" alt="" /></div>
                                 <div className="col-9">
                                     <div id="role">Tác Giả</div>
-                                    <p id="name">{c.id}</p>
+                                    <p id="name">{c.user.name}</p>
                                     <p id="about" > {c.content}</p>
                                 </div>
                             </div>

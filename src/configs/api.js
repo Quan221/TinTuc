@@ -12,12 +12,14 @@ export let endpoints = {
 
     "my-post": "/api/posts/my-post/",
     "post-detail": (postId) => `api/posts/detail/${postId}/`,
-    "like": (postId) => `api/posts/${postId}/like`,
+    "like": (postId) => `api/posts/${postId}/like/`,
     "remove": (postId) => `api/posts/delete/${postId}/`,
-    "check-like": (postId) => `api/posts/${[postId]}/check-like`,
-    "get-like": (postId) => `api/posts/${postId}/like`,
+    "check-like": (postId) => `api/posts/${[postId]}/check-like/`,
+    "get-like": (postId) => `api/posts/${postId}/like/`,
     "send-comment": (postId) => `api/posts/${postId}/comments/`,
-    "get-comment": (postId) => `api/posts/${postId}/comments/`
+    "get-comment": (postId) => `api/posts/${postId}/comments/`,
+    "admin": "/api/posts/admin/",
+    "categoies-posts": (categoryId) => `api/categories/${categoryId}/posts/`,
 }
 export const authApi = () => {
     return axios.create({

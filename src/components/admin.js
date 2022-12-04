@@ -76,8 +76,8 @@ const Admin = () => {
         setToggleClearRows(!toggledClearRows);
     };
     const loadMyPost = async () => {
-        const res = await api.get(endpoints['post'])
-        console.log(res.data)
+        const res = await authApi().get(endpoints['admin'])
+
         setPost(res.data)
 
     }

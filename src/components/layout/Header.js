@@ -86,7 +86,7 @@ const Header = () => {
                     <Link to='/homepage' className="nav-link" >Trang Chủ</Link>
                     {categories.map(c => {
                         return (
-                            <Link className="nav-link" to={`/posts/${c.id}`} >{c.name}</Link>
+                            <Link className="nav-link" to={`/categories/${c.id}/posts`} >{c.name}</Link>
                         )
                     })}
 
