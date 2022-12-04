@@ -14,11 +14,15 @@ import Update from './components/Update';
 import Categories from './components/Categories';
 import Admin from './components/admin';
 export const UserContext = createContext()
+
 function App() {
   const [user, dispatch] = useReducer(myReducer)
+
   return (
     <BrowserRouter>
+
       < UserContext.Provider value={[user, dispatch]} >
+
         <Routes>
           <Route path='/homepage' element={<HomePage />} />
           <Route path='/login' element={<Login />} />
@@ -30,8 +34,10 @@ function App() {
           <Route path='/categories/:categoryId/posts' element={<Categories />} />
           <Route path='/admin' element={<Admin />} />
         </Routes>
+
       </UserContext.Provider>
-    </BrowserRouter>
+
+    </BrowserRouter >
   );
 }
 

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BsJustify, BsPersonFill } from "react-icons/bs";
-import { Image, NavDropdown } from "react-bootstrap";
+import { Button, Image, Nav, NavDropdown } from "react-bootstrap";
 import { UserContext } from "../../App";
 import logo from "../../image/ou.png";
 import api, { endpoints } from "../../configs/api";
@@ -10,20 +10,39 @@ import api, { endpoints } from "../../configs/api";
 
 const Header = () => {
     const [user, dispatch] = useContext(UserContext)
-    const [categories, setCategories] = useState([])
+    const [category, setCategory] = useState([])
+    const [lists, setLists] = useState([])
+    const nav = useNavigate()
+    const goToHome = (categoryId) => {
+        {
+            nav(`/categories/${categoryId}/posts`)
+        }
+    }
     let btn = <></>
     const logout = (evt) => {
         dispatch({ "type": "logout" })
         localStorage.clear()
     }
+    const loadPost = async () => {
+        const res2 = await api.get(endpoints['category'])
+        console.log(res2.data)
+        setCategory(res2.data)
+
+    }
+
+    const loadPost2 = async (categoryId) => {
+        const res2 = await api.get(endpoints['categoies-posts'](categoryId))
+
+        setLists(res2.data)
+
+
+
+        console.log(res2.data)
+
+    }
     useEffect(() => {
 
-        const loadPost = async () => {
-            const res2 = await api.get(endpoints['category'])
-            console.log(res2.data)
-            setCategories(res2.data)
 
-        }
 
 
 
@@ -84,11 +103,13 @@ const Header = () => {
                 <div className='content-header' >
                     <Image src={logo} className="logo-header" ></Image>
                     <Link to='/homepage' className="nav-link" >Trang Chủ</Link>
-                    {categories.map(c => {
+
+                    {category.map(c => {
                         return (
                             <Link className="nav-link" to={`/categories/${c.id}/posts`} >{c.name}</Link>
                         )
                     })}
+
 
 
                 </div>

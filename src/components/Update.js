@@ -50,6 +50,7 @@ const Update = () => {
             const formData = new FormData()
             formData.append("title", title)
             formData.append("content", content)
+            formData.append("photo", photo)
             console.log(category)
             try {
                 await authApi().post(`${endpoints['post']}${postId}`, formData, {
@@ -120,7 +121,12 @@ const Update = () => {
                     onChange={(event) => setContent(event.target.value)}
                 />
             </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label>Hình ảnh</Form.Label>
+                {/* <Form.Control type="file" value={photo} className="form-control" onChange={(event) => setPhoto(event.target.files[0])} /> */}
 
+                <input type='file' class="form-control" onChange={(event) => setPhoto(event.target.files[0])}  ></input>
+            </Form.Group>
 
 
 
@@ -163,6 +169,7 @@ const Update = () => {
                         disabled="true"
                     />
                 </Form.Group>
+
 
 
 

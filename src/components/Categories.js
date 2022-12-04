@@ -16,6 +16,7 @@ const Categories = () => {
     const [lists, setLists] = useState([])
     const [post, setPost] = useState([])
     const { categoryId } = useParams()
+
     useEffect(() => {
 
         const loadPost = async () => {
@@ -34,7 +35,7 @@ const Categories = () => {
 
 
         // loadPost()
-    }, [])
+    }, [categoryId])
 
     return (
         <>

@@ -70,11 +70,11 @@ const HomePage = () => {
 
 
                 })}
-                <div style={{ height: '80px', background: "#C31815", }} >
+                {/* <div style={{ height: '80px', background: "#C31815", }} >
                     <div style={{ height: '40px', width: '150px', background: 'white', position: 'relative', left: '20%', top: '25%' }} >
 
                     </div>
-                </div>
+                </div> */}
 
                 <div className="list-new"  >
 
