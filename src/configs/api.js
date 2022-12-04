@@ -20,6 +20,7 @@ export let endpoints = {
     "get-comment": (postId) => `api/posts/${postId}/comments/`,
     "admin": "/api/posts/admin/",
     "categoies-posts": (categoryId) => `api/categories/${categoryId}/posts/`,
+    "active": (postId) => `api/posts/${postId}/active/`,
 }
 export const authApi = () => {
     return axios.create({

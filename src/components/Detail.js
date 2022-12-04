@@ -101,7 +101,7 @@ const Detail = () => {
 
                 </div>
             </div></>
-        if (check == ' OK') {
+        if (check == 'OK') {
 
 
             btn = <>

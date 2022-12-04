@@ -30,16 +30,17 @@ const Update = () => {
             nav(`/my-post`)
         }
     }
+    const loadMyPost = async () => {
+        const res = await authApi().get(endpoints['post-detail'](postId))
+        console.log(res.data)
+        setMyPost(res.data)
+        setTitle(res.data['title'])
+
+    }
     useEffect(() => {
 
 
-        const loadMyPost = async () => {
-            const res = await authApi().get(endpoints['post-detail'](postId))
-            console.log(res.data)
-            setMyPost(res.data)
-            setTitle(res.data['title'])
 
-        }
 
         loadMyPost()
     }, [])
@@ -94,7 +95,8 @@ const Update = () => {
         goToMyPost()
     }
     const active = async () => {
-        let res = await authApi().post()
+        let res = await authApi().post(((endpoints['active'])(postId)), {})
+        loadMyPost()
     }
     let btn = <>
         <h3 class="mt-3 text-center text-primary text-uppercase">Chỉnh sửa bài viết</h3>
@@ -179,8 +181,17 @@ const Update = () => {
             </Form>
             <Button style={{ backgroundColor: 'red', borderRadius: '10px' }} onClick={remove} > Xóa</Button>
 
-            <Button style={{ backgroundColor: 'red', borderRadius: '10px' }} onClick={remove} disabled='true' > Xóa</Button>
         </>
+    }
+    let btn2 = <>
+        <Button style={{ backgroundColor: 'blue', borderRadius: '10px' }} onClick={active} > Duyệt</Button>
+    </>
+    if (user.role == 3 && myPost.active == 1) {
+
+        btn2 = <>
+            <Button style={{ backgroundColor: 'black', borderRadius: '10px' }} onClick={active} > Đã Duyệt</Button>
+        </>
+
     }
 
     return (
@@ -189,6 +200,8 @@ const Update = () => {
             <Header></Header>
             <Container>
                 {btn}
+                {btn2}
+
             </Container>
 
         </>
